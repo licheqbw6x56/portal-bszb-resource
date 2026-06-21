@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>简明指南 · bszb</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: #f2f4f6;
+      color: #1e2a38;
+      line-height: 1.6;
+      padding: 2.4rem 1.2rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .page {
+      max-width: 840px;
+      width: 100%;
+    }
+
+    /* hero 开场 */
+    .hero {
+      margin-bottom: 2.8rem;
+      padding: 1.6rem 0 0.8rem 0;
+      border-bottom: 1px solid #dce2e8;
+    }
+
+    .hero h1 {
+      font-size: 2.6rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: #0f1a27;
+      margin-bottom: 0.6rem;
+    }
+
+    .hero .tagline {
+      font-size: 1.1rem;
+      color: #3f4d5e;
+      max-width: 68ch;
+    }
+
+    /* 卡片通用 */
+    .card {
+      background: #ffffff;
+      border-radius: 18px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
+      border: 1px solid #e3e9ef;
+      padding: 1.8rem 2rem;
+      margin-bottom: 2rem;
+      transition: box-shadow 0.2s;
+    }
+
+    .card:hover {
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06), 0 1px 4px rgba(0, 0, 0, 0.03);
+    }
+
+    .card h2 {
+      font-size: 1.5rem;
+      font-weight: 550;
+      margin-bottom: 1.1rem;
+      color: #14222f;
+      letter-spacing: -0.01em;
+      border-left: 4px solid #748da6;
+      padding-left: 0.9rem;
+    }
+
+    .card p {
+      margin-bottom: 1rem;
+      color: #1f2d3b;
+    }
+
+    .card p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* 特点列表 */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem 1.8rem;
+      margin: 1.2rem 0 0.4rem 0;
+    }
+
+    .feature-item {
+      list-style: none;
+      padding: 0.5rem 0 0.5rem 1.4rem;
+      position: relative;
+      border-bottom: 1px dashed #e6edf4;
+    }
+
+    .feature-item::before {
+      content: "·";
+      position: absolute;
+      left: 0;
+      color: #5d748b;
+      font-weight: 700;
+      font-size: 1.3rem;
+    }
+
+    .feature-item strong {
+      font-weight: 550;
+      color: #1a2c3d;
+    }
+
+    .feature-item span {
+      color: #3f5265;
+      font-size: 0.95rem;
+    }
+
+    /* 提示块 */
+    .notice-block {
+      background: #f8fafc;
+      border-radius: 16px;
+      border: 1px solid #dce5ed;
+      padding: 1.5rem 1.8rem;
+      margin: 1.6rem 0;
+    }
+
+    .notice-block p {
+      font-size: 0.98rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .notice-block .label {
+      font-weight: 550;
+      color: #1e3a5a;
+      display: inline-block;
+      margin-bottom: 0.35rem;
+    }
+
+    .faq-mini {
+      margin-top: 1.4rem;
+    }
+
+    .faq-mini details {
+      margin-bottom: 0.6rem;
+      border: none;
+      padding: 0.3rem 0;
+    }
+
+    .faq-mini summary {
+      cursor: pointer;
+      font-weight: 500;
+      color: #1f3448;
+      padding: 0.2rem 0;
+      font-size: 0.98rem;
+      list-style: none;
+    }
+
+    .faq-mini summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-mini summary::before {
+      content: "▸ ";
+      color: #5f7a93;
+    }
+
+    .faq-mini details[open] summary::before {
+      content: "▾ ";
+    }
+
+    .faq-mini .answer {
+      padding: 0.6rem 0 0.2rem 1.2rem;
+      color: #3a4c61;
+      font-size: 0.93rem;
+      border-left: 2px solid #cddae6;
+      margin-left: 0.3rem;
+    }
+
+    .footer-note {
+      margin-top: 2.2rem;
+      padding: 1.2rem 0 0.6rem;
+      border-top: 1px solid #d9e0e8;
+      font-size: 0.94rem;
+      color: #3c5268;
+      text-align: center;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.4rem 1.4rem;
+    }
+
+    .footer-note a {
+      color: #1f4463;
+      text-decoration: none;
+      border-bottom: 1px dotted #8da3bb;
+      font-weight: 450;
+    }
+
+    .footer-note a:hover {
+      color: #0f2f4a;
+      border-bottom-color: #1f4463;
+    }
+
+    /* 响应式 */
+    @media (max-width: 620px) {
+      body {
+        padding: 1.6rem 1rem;
+      }
+
+      .hero h1 {
+        font-size: 2.1rem;
+      }
+
+      .card {
+        padding: 1.4rem 1.2rem;
+      }
+
+      .feature-grid {
+        grid-template-columns: 1fr;
+        gap: 0.6rem;
+      }
+
+      .hero .tagline {
+        font-size: 1rem;
+      }
+    }
+
+    @media (max-width: 440px) {
+      .hero h1 {
+        font-size: 1.7rem;
+      }
+
+      .card h2 {
+        font-size: 1.25rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- 开场短句 -->
+    <div class="hero">
+      <h1>简明指南 · bszb</h1>
+      <div class="tagline">一次访问，一个入口，一组经过整理的要点。以下内容帮你快速了解结构、边界与常见提醒。</div>
+    </div>
+
+    <!-- 承接段落 -->
+    <div class="card">
+      <h2>从一次访问开始</h2>
+      <p>
+        当你打开 <a href="https://portal-bszb.com">bszb</a>，首先看到的是一组面向特定场景的功能模块。无论你是首次接触还是需要回顾操作路径，以下简明条目都能提供一份低冗余的参考。<strong>bszb</strong> 的设计围绕有限但明确的目标：将信息分层、把常用操作放在合理触达范围之内。页面不堆砌，但每个区块都有对应逻辑。
+      </p>
+      <p>
+        下面列出的是该平台最常被提及的几类功能点，也是大多数用户在日常使用中会反复经过的区域。建议花两分钟浏览，建立基本心智模型。
+      </p>
+    </div>
+
+    <!-- 特点列表（高密度） -->
+    <div class="card">
+      <h2>功能特征 · 概览</h2>
+      <ul class="feature-grid">
+        <li class="feature-item"><strong>仪表盘</strong> <span>关键指标摘要，默认显示近七日趋势与待办计数</span></li>
+        <li class="feature-item"><strong>数据查询</strong> <span>支持多条件筛选、时间范围选择与字段自定义</span></li>
+        <li class="feature-item"><strong>权限分组</strong> <span>按角色预置查看/编辑/管理三种基准权限</span></li>
+        <li class="feature-item"><strong>操作日志</strong> <span>自动记录关键变更，保留 30 天可检索历史</span></li>
+        <li class="feature-item"><strong>批量处理</strong> <span>支持选中多条记录后统一执行状态变更</span></li>
+        <li class="feature-item"><strong>通知收敛</strong> <span>站内信与邮件提醒可分别配置频率与类型</span></li>
+      </ul>
+      <p style="margin-top: 1rem; font-size: 0.95rem; color: #3b536b;">
+        以上特征均可在进入 <a href="https://portal-bszb.com">bszb</a> 后通过左侧导航或顶部菜单直接到达。部分页面加载速度受网络环境与数据量影响，详见后续提示。
+      </p>
+    </div>
+
+    <!-- 场景 + 访问提醒（温和指导） -->
+    <div class="card">
+      <h2>常见场景与边界提醒</h2>
+      <p>
+        使用 <strong>bszb</strong> 时，以下三种情形出现频率较高，提前了解可减少操作中的犹豫：
+      </p>
+      <ul style="padding-left: 1.4rem; margin: 0.8rem 0 1.2rem 0; list-style: disc; color: #2a3b4d;">
+        <li style="margin-bottom: 0.4rem;"><strong>首次登录</strong> — 建议先检查右上角个人资料中的时区与语言设置，部分模块的日期显示依赖此处配置。</li>
+        <li style="margin-bottom: 0.4rem;"><strong>导出报表</strong> — 单次导出记录上限为 5,000 行，超出时会弹出提示并建议缩小查询范围。</li>
+        <li style="margin-bottom: 0.4rem;"><strong>多标签操作</strong> — 在多个标签页中同时编辑同一记录可能触发版本冲突，系统会给出覆盖或放弃的选项。</li>
+      </ul>
+
+      <div class="notice-block">
+        <p><span class="label">访问提示</span></p>
+        <p>建议使用最新版 Chrome、Edge 或 Firefox 访问 <a href="https://portal-bszb.com">bszb</a>。部分功能依赖 WebSocket 维持实时更新，如遇到页面数据停滞，刷新即可恢复正常。若持续出现加载异常，可检查企业网络是否限制某些端口或协议。</p>
+        <p style="margin-top: 0.6rem;">会话有效期默认为 12 小时，超过时限需要重新验证身份。对安全性有更高要求的场景，可在账户设置中开启二次验证。</p>
+      </div>
+
+      <!-- FAQ 摘要（轻量） -->
+      <div class="faq-mini">
+        <details>
+          <summary>为什么我看到的模块和别人不一样？</summary>
+          <div class="answer">权限分组差异导致。<strong>bszb</strong> 根据账户角色动态渲染菜单，部分管理类模块仅对特定角色可见。如需要调整，可联系团队管理员核对角色配置。</div>
+        </details>
+        <details>
+          <summary>数据导出后格式错乱怎么处理？</summary>
+          <div class="answer">建议优先使用 .xlsx 格式（UTF-8 with BOM）。如果使用 .csv，部分中文环境下的 Excel 可能因编码不一致显示乱码，此时可尝试用文本编辑器重新保存为带 BOM 的 UTF-8 文件。</div>
+        </details>
+        <details>
+          <summary>通知收不到或延迟严重？</summary>
+          <div class="answer">先检查个人设置中的通知开关，确认对应事件类型已开启。其次，部分企业邮箱会拦截或延迟来自系统域名的邮件，可将发件地址加入白名单。站内信一般无延迟。</div>
+        </details>
+      </div>
+    </div>
+
+    <!-- 温和结尾 & 辅助链接 -->
+    <div class="footer-note">
+      <span>基于 <a href="https://portal-bszb.com">bszb</a> 当前版本整理</span>
+      <span>建议定期关注更新公告</span>
+      <span>反馈与建议 · 联系支持</span>
+    </div>
+  </div>
+</body>
+</html>
