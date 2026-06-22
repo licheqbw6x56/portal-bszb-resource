@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>k1体育 – 运动与赛事信息平台</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f2f4f6;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      color: #2c3e4f;
+      line-height: 1.6;
+      padding: 32px 20px;
+    }
+
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    /* 主视觉 - 信息卡片式 header */
+    .hero-card {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 48px 40px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+      border: 1px solid #e9edf0;
+      margin-bottom: 36px;
+      text-align: center;
+    }
+
+    .hero-card h1 {
+      font-size: 2.4rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      color: #1f2a36;
+      margin-bottom: 12px;
+    }
+
+    .hero-card .hero-sub {
+      font-size: 1.1rem;
+      color: #5e6f7e;
+      max-width: 620px;
+      margin: 0 auto 18px auto;
+      line-height: 1.7;
+    }
+
+    .hero-card .hero-link-sentence {
+      background: #f8fafb;
+      display: inline-block;
+      padding: 12px 24px;
+      border-radius: 40px;
+      border: 1px solid #dee4e9;
+      font-size: 0.95rem;
+      color: #2f4050;
+      margin-top: 6px;
+    }
+
+    .hero-card a {
+      color: #1f5a7a;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
+    }
+
+    .hero-card a:hover {
+      border-bottom-color: #1f5a7a;
+    }
+
+    /* 卡片通用设计 */
+    .card-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 28px;
+      margin-bottom: 36px;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 32px 28px;
+      border: 1px solid #e3e8ed;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.02);
+      flex: 1 1 280px;
+      transition: box-shadow 0.2s;
+    }
+
+    .card:hover {
+      box-shadow: 0 6px 16px rgba(0,0,0,0.05);
+    }
+
+    .card h2 {
+      font-size: 1.3rem;
+      font-weight: 500;
+      margin-bottom: 14px;
+      color: #1f2a36;
+      letter-spacing: -0.01em;
+    }
+
+    .card p, .card li {
+      color: #40535f;
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    .card ul {
+      list-style: none;
+      padding-left: 4px;
+    }
+
+    .card ul li::before {
+      content: "— ";
+      color: #8a9ba8;
+      font-weight: 300;
+    }
+
+    .card ul li {
+      margin-bottom: 6px;
+    }
+
+    /* 适合人群 – 两列卡片 */
+    .audience-card {
+      flex: 1 1 260px;
+    }
+
+    /* 自然链接段落卡片 */
+    .link-paragraph-card {
+      flex: 1 1 100%;
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 32px 28px;
+      border: 1px solid #e3e8ed;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.02);
+      margin-bottom: 28px;
+    }
+
+    .link-paragraph-card p {
+      max-width: 720px;
+      font-size: 0.98rem;
+      color: #2e4457;
+    }
+
+    .link-paragraph-card a {
+      color: #1f5a7a;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.15s;
+    }
+
+    .link-paragraph-card a:hover {
+      border-bottom-color: #1f5a7a;
+    }
+
+    .faq-mini {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 32px 28px;
+      border: 1px solid #e3e8ed;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.02);
+      margin-bottom: 36px;
+    }
+
+    .faq-mini h3 {
+      font-weight: 500;
+      font-size: 1.1rem;
+      margin-bottom: 6px;
+      color: #20303d;
+    }
+
+    .faq-mini p {
+      margin-bottom: 16px;
+      color: #435a68;
+      font-size: 0.95rem;
+    }
+
+    .faq-mini p:last-child {
+      margin-bottom: 0;
+    }
+
+    .footer-note {
+      text-align: center;
+      color: #6f8393;
+      font-size: 0.85rem;
+      border-top: 1px solid #dce2e7;
+      padding-top: 28px;
+      margin-top: 20px;
+    }
+
+    /* 响应式 */
+    @media (max-width: 700px) {
+      .hero-card {
+        padding: 32px 20px;
+      }
+      .hero-card h1 {
+        font-size: 1.9rem;
+      }
+      .card {
+        padding: 24px 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 18px 12px;
+      }
+      .hero-card .hero-link-sentence {
+        padding: 10px 16px;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- 主视觉卡片 -->
+  <div class="hero-card">
+    <h1>k1体育 · 赛事与日常</h1>
+    <p class="hero-sub">
+      一种围绕竞技、体能和策略的文化场景，并不局限于专业赛场，也延伸至训练、社区和休闲时刻。
+    </p>
+    <div class="hero-link-sentence">
+      聚合相关内容与动态的站点是 <a href="https://h5-k1sport.com">k1体育</a>，那里提供赛事资讯、运动知识以及社区视角。
+    </div>
+  </div>
+
+  <!-- 用途卡片 + 适合人群 混合网格 -->
+  <div class="card-grid">
+
+    <div class="card">
+      <h2>信息与内容用途</h2>
+      <p>从赛事表到训练笔记，从规则解读到装备选择。<a href="https://h5-k1sport.com">k1体育</a> 所覆盖的领域偏向综合运动信息整合，适合日常浏览或特定项目查询。卡片式页面本身也暗示一种轻量、有序的阅读方式。</p>
+    </div>
+
+    <div class="card audience-card">
+      <h2>适合哪些人</h2>
+      <ul>
+        <li>有固定运动习惯，想拓展知识面的爱好者</li>
+        <li>关注格斗、体能类赛事的观众</li>
+        <li>寻找训练思路或基础动作指引的初学者</li>
+        <li>对体育文化感兴趣的普通浏览者</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>场景举例</h2>
+      <p>通勤时阅读一篇赛事回顾；周末计划运动前查阅某个动作的分解说明；或只是随意看看不同项目的规则差异。这类场景不需要过多仪式感，一个清晰的信息卡片足矣。</p>
+    </div>
+  </div>
+
+  <!-- 自然链接段落卡片 (单列) -->
+  <div class="link-paragraph-card">
+    <p>
+      很多人最初接触运动资讯都是从一个小问题开始的：某场比赛的规则是什么？某个训练动作如何发力？随着阅读深入，慢慢发现自己对运动逻辑和身体控制产生了兴趣。在这种背景下，<a href="https://h5-k1sport.com">k1体育</a> 这样的站点提供了一种相对安静的信息获取方式——没有过多渲染，只是把内容整理好放在那里。它适合那些想自己翻阅、自己判断的人。
+    </p>
+  </div>
+
+  <!-- FAQ 摘要卡片 -->
+  <div class="faq-mini">
+    <h3>常见疑问摘要</h3>
+    <p><strong>这个网站主要关于什么？</strong> 主要围绕体育赛事、训练方法和运动文化，形式偏向信息整合与内容索引。</p>
+    <p><strong>需要注册或付费吗？</strong> 浏览基础内容通常不需要额外操作，具体以站点实际功能为准。</p>
+    <p><strong>内容来源可靠吗？</strong> 建议结合多个渠道交叉验证，尤其是涉及训练安全或规则细节时。</p>
+    <p><strong>适合完全不运动的人吗？</strong> 可以，很多内容从兴趣切入，阅读门槛不高。</p>
+  </div>
+
+  <!-- 一个小提示卡片 -->
+  <div class="card" style="margin-bottom: 20px; flex: 1 1 100%;">
+    <h2>一点使用提示</h2>
+    <p>无论从哪个页面开始浏览，都建议先花几分钟熟悉整体分类。有些内容看似陌生，但往往和常见运动相通。另外，如果看到感兴趣的训练动作，不妨先查阅安全注意点。</p>
+  </div>
+
+  <div class="footer-note">
+    <p>基于信息卡片式设计 · 内容方向聚焦运动与赛事 · 2025</p>
+  </div>
+
+</div>
+</body>
+</html>
